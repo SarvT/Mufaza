@@ -22,13 +22,23 @@ public class MufazaController {
     }
 
     @GetMapping("/")
-    public String Greet(){
+    public String greet(){
         return "Welcome User!";
     }
+    @GetMapping("/test")
+    public String test(){
+        return "test success!";
+    }
+
+
 
     @GetMapping("/items")
     public Iterable<MufazaItemModel> getItems(){
         return itemService.getAll();
+    }
+    @GetMapping("/itemz")
+    public MufazaItemModel getItemz(){
+        return new MufazaItemModel("4","vyhvv");
     }
     @GetMapping("/items/{id}")
     public MufazaItemModel getItem(@PathVariable Integer id){
@@ -38,8 +48,8 @@ public class MufazaController {
     }
 
     @DeleteMapping("/items/{id}")
-    public void deleteItem(@PathVariable String id){
-        itemService.remove(Integer.valueOf(id));
+    public void deleteItem(@PathVariable Integer id){
+        itemService.remove(id);
 //        if (item == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 //        return item;
     }
